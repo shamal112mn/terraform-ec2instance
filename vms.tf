@@ -1,13 +1,8 @@
-resource "aws_key_pair" "pub_key" {
-  key_name   = "asus"
-   
-}
-
 
 resource "aws_instance" "target" {
   ami                         = var.ami
   instance_type               = var.instance_type
-  key_name                    = aws_key_pair.pub_key.key_name
+  key_name                    = "asus"
   iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
   vpc_security_group_ids      = [aws_security_group.allow_login.id]
   associate_public_ip_address = "true"
